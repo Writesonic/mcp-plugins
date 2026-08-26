@@ -1,0 +1,21 @@
+{
+  "name": "writesonic-agents",
+  "displayName": "Writesonic Agents",
+  "version": "1.0.0",
+  "description": "Connect Writesonic Agents to Claude Code. Manage tasks, playbooks, grids, knowledge base, and pages from chat — triage work, follow what agents did, inspect playbook runs, read grids, search your Knowledge Base and Brand Kit, and pull Pages reports.",
+  "author": {
+    "name": "Writesonic",
+    "url": "https://writesonic.com"
+  },
+  "homepage": "https://apidocs.writesonic.com/agents-mcp/mcp-server",
+  "repository": "https://github.com/Writesonic/mcp-plugins",
+  "license": "MIT",
+  "keywords": [
+    "writesonic",
+    "agents",
+    "workflows",
+    "grids",
+    "tasks",
+    "knowledge-base"
+  ]
+}

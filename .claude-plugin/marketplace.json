@@ -1,0 +1,64 @@
+{
+  "name": "writesonic",
+  "description": "Writesonic plugins for Claude Code: AI-search visibility (GEO) and Writesonic Agents workspace data.",
+  "owner": {
+    "name": "Writesonic, Inc.",
+    "email": "support@writesonic.com",
+    "url": "https://writesonic.com"
+  },
+  "plugins": [
+    {
+      "name": "writesonic",
+      "displayName": "Writesonic",
+      "source": "./plugins/writesonic",
+      "description": "Access AI search visibility (AEO/GEO) analytics across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini, and more. Track visibility score, citation share, share of voice, competitor performance, and brand sentiment using data from 500M+ real AI conversations across 50+ markets.\n\nClaude connects multiple Writesonic reports in a single conversation - identifying gaps, surfacing trends, and pinpointing where to focus your GEO strategy.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Writesonic, Inc.",
+        "email": "support@writesonic.com",
+        "url": "https://writesonic.com"
+      },
+      "homepage": "https://apidocs.writesonic.com/mcp/mcp-server",
+      "repository": "https://github.com/Writesonic/mcp-plugins",
+      "license": "MIT",
+      "category": "business",
+      "keywords": [
+        "geo",
+        "aeo",
+        "ai-visibility",
+        "ai-search",
+        "brand-monitoring",
+        "citations",
+        "share-of-voice",
+        "chatgpt",
+        "perplexity",
+        "google-ai-overviews",
+        "gemini"
+      ]
+    },
+    {
+      "name": "writesonic-agents",
+      "displayName": "Writesonic Agents",
+      "source": "./plugins/agents",
+      "description": "Connect Writesonic Agents to Claude Code. Manage tasks, playbooks, grids, knowledge base, and pages from chat — triage work, follow what agents did, inspect playbook runs, read grids, search your Knowledge Base and Brand Kit, and pull Pages reports.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Writesonic, Inc.",
+        "email": "support@writesonic.com",
+        "url": "https://writesonic.com"
+      },
+      "homepage": "https://apidocs.writesonic.com/agents-mcp/mcp-server",
+      "repository": "https://github.com/Writesonic/mcp-plugins",
+      "license": "MIT",
+      "category": "business",
+      "keywords": [
+        "writesonic",
+        "agents",
+        "workflows",
+        "grids",
+        "tasks",
+        "knowledge-base"
+      ]
+    }
+  ]
+}
