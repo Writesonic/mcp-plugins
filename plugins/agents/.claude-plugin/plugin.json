@@ -9,6 +9,7 @@
   },
   "homepage": "https://apidocs.writesonic.com/agents-mcp/mcp-server",
   "repository": "https://github.com/Writesonic/mcp-plugins",
+  "privacyPolicyUrl": "https://writesonic.com/privacy-policy",
   "license": "MIT",
   "keywords": [
     "writesonic",
