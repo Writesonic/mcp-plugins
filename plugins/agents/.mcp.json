@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "agents": {
-      "url": "https://mcp.agents.writesonic.com/mcp"
+      "url": "https://mcp.agents.writesonic.com/mcp",
+      "type": "sse"
     }
   }
 }
