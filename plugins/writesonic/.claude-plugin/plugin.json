@@ -1,8 +1,8 @@
 {
-  "name": "writesonic-mcp",
+  "name": "writesonic",
   "displayName": "Writesonic",
   "version": "1.0.0",
-  "description": "Access AI search visibility (AEO/GEO) analytics across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini, and more. Track visibility score, citation share, share of voice, competitor performance, and brand sentiment using data from 500M+ real AI conversations across 50+ markets.\n\nClaude connects multiple Writesonic reports in a single conversation - identifying gaps, surfacing trends, and pinpointing where to focus your GEO strategy.",
+  "description": "Access AI search visibility (AEO/GEO) analytics across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini, and more. Track visibility score, citation share, share of voice, competitor performance, and brand sentiment using data from 500M+ real AI conversations across 50+ markets.\n\nAlso connects your Writesonic Agents workspace: triage tasks, follow what agents did, inspect playbook runs, read grids, search your Knowledge Base and Brand Kit, and pull Pages reports.",
   "author": {
     "name": "Writesonic, Inc.",
     "email": "support@writesonic.com",
@@ -23,6 +23,11 @@
     "chatgpt",
     "perplexity",
     "google-ai-overviews",
-    "gemini"
+    "gemini",
+    "agents",
+    "workflows",
+    "grids",
+    "tasks",
+    "knowledge-base"
   ]
 }
