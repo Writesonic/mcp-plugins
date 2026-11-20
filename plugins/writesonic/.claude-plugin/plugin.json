@@ -9,8 +9,12 @@
     "url": "https://writesonic.com"
   },
   "homepage": "https://apidocs.writesonic.com/mcp/mcp-server",
+  "documentationUrl": "https://apidocs.writesonic.com/mcp/mcp-server",
   "repository": "https://github.com/Writesonic/mcp-plugins",
   "privacyPolicyUrl": "https://writesonic.com/privacy-policy",
+  "termsOfServiceUrl": "https://writesonic.com/terms",
+  "supportUrl": "https://apidocs.writesonic.com/mcp/mcp-server",
+  "icon": "./.claude-plugin/icon.png",
   "license": "MIT",
   "keywords": [
     "geo",
