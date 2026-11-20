@@ -13,22 +13,21 @@ Works with **Claude Code**. The same MCP servers also connect to **Claude.ai**, 
 ```
 /plugin marketplace add Writesonic/mcp-plugins
 /plugin install writesonic@writesonic
-/plugin install writesonic-agents@writesonic
 ```
 
-Then run `/mcp`, select the server, and follow the browser prompt to sign in with your Writesonic account. No API keys to paste.
+Then run `/mcp`, select `geo` (and `agents` if you use Writesonic Agents), and follow the browser prompt to sign in with your Writesonic account. No API keys to paste.
 
-Once listed in the community marketplace, the same plugins install as `writesonic@claude-community` and `writesonic-agents@claude-community`.
+Once listed in the community marketplace, the same plugin installs as `writesonic@claude-community`.
 
 ---
 
 ## Local development
 
-To work on a plugin from a local checkout in Claude Code:
+To work on the plugin from a local checkout in Claude Code:
 
 ```bash
 git clone https://github.com/Writesonic/mcp-plugins
-claude --plugin-dir ./mcp-plugins/plugins/writesonic --plugin-dir ./mcp-plugins/plugins/agents
+claude --plugin-dir ./mcp-plugins/plugins/writesonic
 ```
 
 Then run `/mcp` from inside Claude Code, select the server, and authenticate. Edit a `SKILL.md` and run `/reload-plugins` to pick up changes. Validate before committing:
@@ -43,12 +42,11 @@ claude plugin validate . --strict
 
 | Plugin | Description |
 | --- | --- |
-| [writesonic](./plugins/writesonic/) | AI search visibility (AEO/GEO): share of voice, citations, sentiment, competitor benchmarking and Action Center recommendations across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini and more |
-| [writesonic-agents](./plugins/agents/) | Writesonic Agents workspace: tasks, playbooks, grids, Knowledge Base, Brand Kit and Pages reports |
+| [writesonic](./plugins/writesonic/) | AI search visibility (AEO/GEO): share of voice, citations, sentiment, competitor benchmarking and Action Center recommendations across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini and more, plus your Writesonic Agents workspace: tasks, playbooks, grids, Knowledge Base, Brand Kit and Pages reports |
 
 ---
 
-## Writesonic Plugin
+## GEO Skills
 
 Turns your assistant into a GEO analyst over 87 MCP tools. Skills are organized into three areas plus quick commands.
 
@@ -87,7 +85,7 @@ Turns your assistant into a GEO analyst over 87 MCP tools. Skills are organized 
 
 ---
 
-## Writesonic Agents Plugin
+## Writesonic Agents Skills
 
 Operates your Agents workspace: 20 core tools plus `execute_batch` / `execute_plan` for chaining reads.
 
@@ -103,10 +101,10 @@ Operates your Agents workspace: 20 core tools plus `execute_batch` / `execute_pl
 
 | Command | What it does |
 | --- | --- |
-| `/writesonic-agents:whoami [project]` | Who you're signed in as and which projects you can access |
-| `/writesonic-agents:tasks [filter]` | List tasks, e.g. `/writesonic-agents:tasks high priority open` |
-| `/writesonic-agents:new-task <title>` | Create a task (confirms first) and assign it to you |
-| `/writesonic-agents:brand-voice <question>` | Answer from the Brand Kit / Knowledge Base |
+| `/writesonic:whoami [project]` | Who you're signed in as and which projects you can access |
+| `/writesonic:tasks [filter]` | List tasks, e.g. `/writesonic:tasks high priority open` |
+| `/writesonic:new-task <title>` | Create a task (confirms first) and assign it to you |
+| `/writesonic:brand-voice <question>` | Answer from the Brand Kit / Knowledge Base |
 
 ---
 
@@ -119,32 +117,27 @@ plugins/
   writesonic/
     .claude-plugin/
       plugin.json             # Plugin manifest
-    .mcp.json                 # MCP server: https://mcp.writesonic.com/mcp
+    .mcp.json                 # MCP servers: geo (https://mcp.writesonic.com/mcp), agents (https://mcp.agents.writesonic.com/mcp)
     skills/
       action-center/
+      agent-run-review/
+      brand-voice/
       competitor-teardown/
       content-gap-brief/
       kpi/
       markets/
       monthly-performance-report/
+      new-task/
       page-optimization/
       projects/
       quarterly-visibility-report/
       sov/
-      topics/
-      visibility-drop/
-      weekly-geo-digest/
-  agents/
-    .claude-plugin/
-      plugin.json             # Plugin manifest
-    .mcp.json                 # MCP server: https://mcp.agents.writesonic.com/mcp
-    skills/
-      agent-run-review/
-      brand-voice/
-      new-task/
       status-snapshot/
       task-triage/
       tasks/
+      topics/
+      visibility-drop/
+      weekly-geo-digest/
       whoami/
 ```
 
@@ -152,7 +145,7 @@ plugins/
 
 ## MCP Configuration for other clients
 
-The plugins are thin wrappers around two hosted MCP servers, which any MCP-compatible client can use directly:
+The plugin is a thin wrapper around two hosted MCP servers, which any MCP-compatible client can use directly:
 
 | Server | URL | Docs |
 | --- | --- | --- |
@@ -168,8 +161,8 @@ The plugins are thin wrappers around two hosted MCP servers, which any MCP-compa
 ## Requirements
 
 - **Claude Code** (or another MCP-compatible client)
-- **Writesonic account** with an active paid plan and at least one project with tracked prompts (`writesonic`)
-- **Writesonic Agents access** — currently limited to selected enterprise and agency accounts in beta (`writesonic-agents`)
+- **Writesonic account** with an active paid plan and at least one project with tracked prompts
+- **Writesonic Agents access** for the Agents skills — currently limited to selected enterprise and agency accounts in beta
 
 ---
 

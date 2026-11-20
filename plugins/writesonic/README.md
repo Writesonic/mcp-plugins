@@ -1,10 +1,12 @@
-# Writesonic GEO Plugin
+# Writesonic Plugin
 
 > Track Brand Visibility in AI. Access AI search visibility (AEO/GEO) analytics across ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini, and more. Track visibility score, citation share, share of voice, competitor performance, and brand sentiment using data from 500M+ real AI conversations across 50+ markets.
 
 Claude connects multiple Writesonic reports in a single conversation - identifying gaps, surfacing trends, and pinpointing where to focus your GEO strategy.
 
-Works with **Claude Code**. The MCP server also connects to **Claude.ai**, **Claude Desktop** and **ChatGPT**.
+The same plugin connects your **Writesonic Agents** workspace: triage tasks, follow what agents did, inspect playbook runs, read grids, search your Knowledge Base and Brand Kit, and pull Pages reports.
+
+Works with **Claude Code**. The MCP servers also connect to **Claude.ai**, **Claude Desktop** and **ChatGPT**.
 
 ---
 
@@ -20,11 +22,13 @@ Claude Code:
 /plugin install writesonic@writesonic
 ```
 
-Then `/mcp` → select `geo` → sign in with your Writesonic account in the browser.
+Then `/mcp` → select `geo` → sign in with your Writesonic account in the browser. If you use Writesonic Agents, do the same for `agents`.
 
 ---
 
 ## What's Included
+
+### GEO
 
 | Skill | What it does |
 | ----- | ------------ |
@@ -42,12 +46,25 @@ Then `/mcp` → select `geo` → sign in with your Writesonic account in the bro
 | **topics** | `/writesonic:topics <project>` — visibility by topic, strongest to weakest |
 | **markets** | `/writesonic:markets <project>` — visibility by geographic market |
 
+### Writesonic Agents
+
+| Skill | What it does |
+| ----- | ------------ |
+| **task-triage** | Open task counts grouped by assignee, then the high-priority tasks that aren't done |
+| **agent-run-review** | Step-by-step walkthrough of what an agent did on a task |
+| **status-snapshot** | One-shot status — open tasks, recent playbook runs, failing integrations — chained in a single `execute_batch` call |
+| **whoami** | `/writesonic:whoami [project]` — identity and accessible projects |
+| **tasks** | `/writesonic:tasks [filter]` — list tasks by priority, status, assignee or keyword |
+| **new-task** | `/writesonic:new-task <title>` — create a task (confirms first) and assign it to you |
+| **brand-voice** | `/writesonic:brand-voice <question>` — answer from the Brand Kit / Knowledge Base |
+
 ---
 
 ## Requirements
 
 - **MCP-compatible client** – Claude Code, Claude.ai, Claude Desktop or ChatGPT
 - **Writesonic account** – with an active paid plan and at least one project with tracked prompts
+- **Writesonic Agents access** (for the Agents skills) – currently limited to selected enterprise and agency accounts in beta
 
 ---
 
@@ -107,13 +124,56 @@ Quick commands run on demand: `/writesonic:kpi`, `/writesonic:sov ChatGPT 30`, `
 
 ---
 
+## Writesonic Agents Usage
+
+```
+"How many open tasks do I have, grouped by assignee?"           → task-triage activates
+"What did the agent do on task ABC-123? Walk me through it"      → agent-run-review activates
+"Give me a status snapshot of the workspace"                     → status-snapshot activates
+```
+
+Quick commands run on demand: `/writesonic:whoami`, `/writesonic:tasks high priority open`, `/writesonic:new-task Refresh the pricing page for AI search`, `/writesonic:brand-voice what does our guide say about tone`.
+
+Only `create_task`, `update_task` and `comment_on_task` change anything — everything else is read-only, and writes are shown to you and confirmed before they happen.
+
+### Agents Example Workflows
+
+#### Task Triage
+
+1. Ask: "How many open tasks do I have, grouped by assignee?"
+2. Skill resolves your project, then counts open tasks per person
+3. Skill lists the high-priority tasks that aren't done
+4. You get a workload table and the list that needs attention
+
+#### Follow an Agent's Work
+
+1. Ask: "What did the agent do on task ABC-123?"
+2. Skill fetches the runs for that task
+3. Skill walks the latest run's steps in order
+4. You get what was asked, each step, the outcome, and anything that failed
+
+#### Status Snapshot
+
+1. Ask: "Give me a status snapshot: open tasks, recent playbook runs, failing integrations"
+2. Skill chains the three reads in one batched call instead of round-tripping
+3. Skill flags disconnected or failing integrations
+4. You get a three-section status you can paste into a standup
+
+---
+
 ## MCP Configuration
 
-The plugin connects to the hosted Writesonic MCP server at `https://mcp.writesonic.com/mcp` — no local server or API keys.
+The plugin connects to two hosted MCP servers — no local server or API keys:
+
+- `geo`: `https://mcp.writesonic.com/mcp`
+- `agents`: `https://mcp.agents.writesonic.com/mcp`
 
 - **Claude.ai / Claude Desktop**: Settings → Connectors → Add custom connector → paste the URL → sign in
-- **Claude Code without the plugin**: `claude mcp add writesonic --transport streamable-http https://mcp.writesonic.com/mcp`
+- **Claude Code without the plugin**: `claude mcp add writesonic --transport streamable-http https://mcp.writesonic.com/mcp` (and `claude mcp add writesonic-agents --transport streamable-http https://mcp.agents.writesonic.com/mcp`)
 - **ChatGPT**: enable Developer Mode and add the URL as a connector
 
-Docs: [MCP server](https://apidocs.writesonic.com/mcp/mcp-server) · [Setup](https://apidocs.writesonic.com/mcp/setup) · [Use cases](https://apidocs.writesonic.com/mcp/examples) · [Tools reference](https://apidocs.writesonic.com/mcp/tools-reference)
+Agents docs: [MCP server](https://apidocs.writesonic.com/agents-mcp/mcp-server) · [Setup](https://apidocs.writesonic.com/agents-mcp/setup) · [Use cases](https://apidocs.writesonic.com/agents-mcp/examples) · [Tools reference](https://apidocs.writesonic.com/agents-mcp/tools-reference)
+
+
+GEO docs: [MCP server](https://apidocs.writesonic.com/mcp/mcp-server) · [Setup](https://apidocs.writesonic.com/mcp/setup) · [Use cases](https://apidocs.writesonic.com/mcp/examples) · [Tools reference](https://apidocs.writesonic.com/mcp/tools-reference)
 Privacy: https://writesonic.com/privacy-policy · Terms: https://writesonic.com/terms · Support: support@writesonic.com

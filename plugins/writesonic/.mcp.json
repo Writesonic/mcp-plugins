@@ -3,6 +3,10 @@
     "geo": {
       "url": "https://mcp.writesonic.com/mcp",
       "type": "sse"
+    },
+    "agents": {
+      "url": "https://mcp.agents.writesonic.com/mcp",
+      "type": "sse"
     }
   }
 }
