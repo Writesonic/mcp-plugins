@@ -2,11 +2,11 @@
   "mcpServers": {
     "geo": {
       "url": "https://mcp.writesonic.com/mcp",
-      "type": "sse"
+      "type": "http"
     },
     "agents": {
       "url": "https://mcp.agents.writesonic.com/mcp",
-      "type": "sse"
+      "type": "http"
     }
   }
 }
